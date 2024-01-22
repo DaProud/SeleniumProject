@@ -1,5 +1,7 @@
 package demoQAWebsite.Tests;
 
+import demoQAWebsite.HelperMethods.ElementsMethods;
+import demoQAWebsite.HelperMethods.JavascriptHelpers;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -12,7 +14,9 @@ import java.util.List;
 
 public class WebTableTest {
 
-    public WebDriver driver;
+    WebDriver driver;
+    ElementsMethods elementsMethods;
+    JavascriptHelpers javascriptHelpers;
 
     @Test
     public void automationMethod() throws InterruptedException {
@@ -26,24 +30,26 @@ public class WebTableTest {
         // Accesam o pagina Web
         driver.get("https://demoqa.com/");
 
+        elementsMethods = new ElementsMethods(driver);
+        javascriptHelpers = new JavascriptHelpers(driver);
+
         // Facem un scroll ca sa fie elementul vizibil
         // in caz ca nu incape pe pagina:)
         // JavascriptExecutor ajuta atunci cand metodele standard din selenium nu ne ajuta :)
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,400)");
+        javascriptHelpers.scrollDown(400);
 
         // Declaram un element
         WebElement elementsField = driver.findElement(By.xpath("//h5[text()='Elements']"));
-        elementsField.click();
+        elementsMethods.clickOnElement(elementsField);
 
         WebElement webTablesField = driver.findElement(By.xpath("//span[text()='Web Tables']"));
-        webTablesField.click();
+        elementsMethods.clickOnElement(webTablesField);
 
         List<WebElement> tableElements = driver.findElements(By.xpath("//div[@class='rt-tbody']/div/div[@class='rt-tr -even' or @class='rt-tr -odd']"));
-        Integer actualTableSize = tableElements.size();
+        int actualTableSize = tableElements.size();
 
         WebElement addNewRecordButton = driver.findElement(By.id("addNewRecordButton"));
-        addNewRecordButton.click();
+        elementsMethods.clickOnElement(addNewRecordButton);
 
         // Declararea valorilor cu care se populeaza formul
         String firstNameValue = "Daniel";
@@ -54,27 +60,27 @@ public class WebTableTest {
         String departmentValue = "Marketing";
 
         WebElement firstNameField = driver.findElement(By.id("firstName"));
-        firstNameField.sendKeys(firstNameValue);
+        elementsMethods.fillElement(firstNameField, firstNameValue);
 
         WebElement lastNameField = driver.findElement(By.id("lastName"));
-        lastNameField.sendKeys(lastNameValue);
+        elementsMethods.fillElement(lastNameField, lastNameValue);
 
         WebElement emailField = driver.findElement(By.id("userEmail"));
-        emailField.sendKeys(emailValue);
+        elementsMethods.fillElement(emailField, emailValue);
 
         WebElement ageField = driver.findElement(By.id("age"));
-        ageField.sendKeys(ageValue);
+        elementsMethods.fillElement(ageField,  ageValue);
 
         WebElement salaryField = driver.findElement(By.id("salary"));
-        salaryField.sendKeys(salaryValue);
+        elementsMethods.fillElement(salaryField, salaryValue);
 
         WebElement departmentField = driver.findElement(By.id("department"));
-        departmentField.sendKeys(departmentValue);
+        elementsMethods.fillElement(departmentField, departmentValue);
 
         Thread.sleep(3000);
 
         WebElement submitButton = driver.findElement(By.id("submit"));
-        submitButton.click();
+        elementsMethods.clickOnElement(submitButton);
 
         List<WebElement> expectedTableElements = driver.findElements(By.xpath("//div[@class='rt-tbody']/div/div[@class='rt-tr -even' or @class='rt-tr -odd']"));
         Integer expectedTableSize = actualTableSize +1;

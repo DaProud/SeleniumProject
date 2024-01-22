@@ -1,16 +1,14 @@
 package demoQAWebsite.Tests;
 
+import demoQAWebsite.HelperMethods.ElementsMethods;
+import demoQAWebsite.HelperMethods.JavascriptHelpers;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -18,7 +16,9 @@ import java.util.Map;
 
 public class PracticeFormTest {
 
-    public WebDriver driver;
+    WebDriver driver;
+    ElementsMethods elementMethods;
+    JavascriptHelpers javascriptHelpers;
 
     @Test
     public void automationMethod() throws InterruptedException {
@@ -32,83 +32,75 @@ public class PracticeFormTest {
         // Accesam o pagina Web
         driver.get("https://demoqa.com/");
 
+        elementMethods = new ElementsMethods(driver);
+        javascriptHelpers = new JavascriptHelpers(driver);
+
         // Facem un scroll ca sa fie elementul vizibil
         // in caz ca nu incape pe pagina:)
-        // JavascriptExecutor ajuta atunci cand metodele standard din selenium nu ne ajuta :)
-        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
-        javascriptExecutor.executeScript("window.scrollBy(0,400)");
+        javascriptHelpers.scrollDown(400);
 
         WebElement formsElement = driver.findElement(By.xpath("//h5[text()='Forms']"));
-        formsElement.click();
+        elementMethods.clickOnElement(formsElement);
 
         WebElement practiceFormElement = driver.findElement(By.xpath("//span[text()='Practice Form']"));
-        practiceFormElement.click();
+        elementMethods.clickOnElement(practiceFormElement);
 
 //        JavascriptExecutor executor = (JavascriptExecutor) driver;
 //        executor.executeScript("document.body.style.zoom = '70%'");
+        javascriptHelpers.scrollDown(400);
 
         WebElement firstNameElement = driver.findElement(By.id("firstName"));
-        String firstNameValue = "Daniel";
-        firstNameElement.sendKeys(firstNameValue);
+        elementMethods.fillElement(firstNameElement, "Daniel");
 
         WebElement lastNameElement = driver.findElement(By.id("lastName"));
-        String lastNameValue = "Mindru";
-        lastNameElement.sendKeys(lastNameValue);
+        elementMethods.fillElement(lastNameElement, "Mindru");
 
         WebElement userEmailElement = driver.findElement(By.id("userEmail"));
-        String userEmailValue = "daniel@test.com";
-        userEmailElement.sendKeys(userEmailValue);
+        elementMethods.fillElement(userEmailElement, "daniel@test.com");
 
         WebElement genderMaleElement = driver.findElement(By.xpath("//label[@for='gender-radio-1']"));
         WebElement genderFemaleElement = driver.findElement(By.xpath("//label[@for='gender-radio-2']"));
         WebElement genderOtherElement = driver.findElement(By.xpath("//label[@for='gender-radio-3']"));
+        List<WebElement> genderElements = new ArrayList<>();
+        genderElements.add(genderMaleElement);
+        genderElements.add(genderFemaleElement);
+        genderElements.add(genderOtherElement);
 
-        String genderValue = "Male";
-
-        if (genderMaleElement.getText().equals(genderValue)) {
-            genderMaleElement.click();
-        } else if (genderFemaleElement.getText().equals(genderValue)) {
-            genderFemaleElement.click();
-        } else if (genderOtherElement.getText().equals(genderValue)) {
-            genderOtherElement.click();
-        }
+        elementMethods.selectElementFromListByText(genderElements, "Male");
 
         WebElement mobileNumberElement = driver.findElement(By.cssSelector("input[placeholder='Mobile Number']"));
-        String mobileNumberValue = "0740696969";
-        mobileNumberElement.sendKeys(mobileNumberValue);
+        elementMethods.fillElement(mobileNumberElement, "0740696969");
 
+        // Date of Birth:
         String yearOfBirthValue = "1988";
         String monthOfBirthValue = "March";
         String dayOfBirthValue = "30";
 
         WebElement dateOfBirthInputElement = driver.findElement(By.id("dateOfBirthInput"));
         dateOfBirthInputElement.click();
+        javascriptHelpers.scrollDown(400);
 
         WebElement yearElement = driver.findElement(By.xpath("//select[@class='react-datepicker__year-select']"));
-        Select yearSelect = new Select(yearElement);
-        yearSelect.selectByValue(yearOfBirthValue);
+        elementMethods.selectByValue(yearElement, yearOfBirthValue);
 
         WebElement monthElement = driver.findElement(By.xpath("//select[@class='react-datepicker__month-select']"));
-        Select monthSelect = new Select(monthElement);
-        monthSelect.selectByVisibleText(monthOfBirthValue);
+        elementMethods.selectByVisibleText(monthElement, monthOfBirthValue);
 
         String dayOfBirthxPath = "//div[@class='react-datepicker__day react-datepicker__day--0" + dayOfBirthValue + "']";
         WebElement dayOfBirthElement = driver.findElement(By.xpath(dayOfBirthxPath));
-        dayOfBirthElement.click();
+        elementMethods.clickOnElement(dayOfBirthElement);
 
 
+        // Subjects:
         List<String> subjectValues = new ArrayList<>();
         subjectValues.add("Social Studies");
         subjectValues.add("Maths");
         subjectValues.add("History");
 
         WebElement subjectsInputElement = driver.findElement(By.id("subjectsInput"));
-        for (String subject : subjectValues) {
-            subjectsInputElement.sendKeys(subject);
-            subjectsInputElement.sendKeys(Keys.ENTER);
-        }
+        elementMethods.fillMultipleValues(subjectsInputElement, subjectValues);
 
-
+        // Hobbies:
         List<String> hobbiesValues = new ArrayList<>();
         hobbiesValues.add("Sports");
         hobbiesValues.add("Music");
@@ -116,76 +108,63 @@ public class PracticeFormTest {
         WebElement hobbiesSportsElement = driver.findElement(By.xpath("//label[@for='hobbies-checkbox-1']"));
         WebElement hobbiesReadingElement = driver.findElement(By.xpath("//label[@for='hobbies-checkbox-2']"));
         WebElement hobbiesMusicElement = driver.findElement(By.xpath("//label[@for='hobbies-checkbox-3']"));
+        List<WebElement>  hobbyElements = new ArrayList<>();
+        hobbyElements.add(hobbiesSportsElement);
+        hobbyElements.add(hobbiesReadingElement);
+        hobbyElements.add(hobbiesMusicElement);
 
-        for (String hobby : hobbiesValues) {
-            switch (hobby) {
-                case "Sports":
-                    hobbiesSportsElement.click();
-                    break;
-                case "Reading":
-                    hobbiesReadingElement.click();
-                    break;
-                case "Music":
-                    hobbiesMusicElement.click();
-                    break;
-                default:
-                    System.out.println("Not a valid hobby... Please choose a valid value. :)");
-            }
-        }
+        elementMethods.checkMultipleElementsByListOfValues(hobbyElements, hobbiesValues);
 
         WebElement uploadPictureElement = driver.findElement(By.id("uploadPicture"));
-        String pictureFilePath = "src/test/resources/1.png";
-        File file = new File(pictureFilePath);
-        uploadPictureElement.sendKeys(file.getAbsolutePath());
+        elementMethods.uploadPicture(uploadPictureElement);
 
         WebElement currentAddressElement = driver.findElement(By.id("currentAddress"));
         String currentAddressValue =
             "Targu Mures, Romania" + "\n" +
-            "Line 2" + "\n" +
-            "Line 3";
-        currentAddressElement.sendKeys(currentAddressValue);
+                "Line 2" + "\n" +
+                "Line 3";
+        elementMethods.fillElement(currentAddressElement, currentAddressValue);
 
+        // State:
         WebElement stateElement = driver.findElement(By.id("react-select-3-input"));
-//        stateElement.click();   // -> nu merge direct din Selenium :)
-
         // Cand nu poti face click pe element (eg o reclama se suprapune) se poate folosi "ciocanul"
         // JavascriptExecutor iti permite sa faci actiuni extra
-        javascriptExecutor.executeScript("arguments[0].click();", stateElement);
-        String stateValue = "NCR";
-        stateElement.sendKeys(stateValue);
-        stateElement.sendKeys(Keys.ENTER);
+        javascriptHelpers.forceClick(stateElement);
+        elementMethods.fillElementWithEnter(stateElement, "NCR");
 
+        // City:
         WebElement cityElement = driver.findElement(By.id("react-select-4-input"));
-        javascriptExecutor.executeScript("arguments[0].click();", cityElement);
-        String cityValue = "Delhi";
-        cityElement.sendKeys(cityValue);
-        cityElement.sendKeys(Keys.ENTER);
+        javascriptHelpers.forceClick(cityElement);
+        elementMethods.fillElementWithEnter(cityElement, "Delhi");
 
-
+        // Submit Form:
         WebElement submitElement = driver.findElement(By.id("submit"));
-        javascriptExecutor.executeScript("arguments[0].click();", submitElement);
+        javascriptHelpers.forceClick(submitElement);
 
         // Tema: Compararea datelor de dupa Submit:
 
         // Pregatim datele pentru comparari si facem formatarile necesare unde e cazul
         // in functie de cum sunt afisate in pagina de dupa "Submit"
-        String expectedStudentName = firstNameValue + " " + lastNameValue;  // eg. "Daniel Mindru"
+        String expectedStudentName = "Daniel Mindru";
+        String expectedEmail = "daniel@test.com";
+        String expectedMobileNumber = "0740696969";
+        String expectedGender = "Male";
         String expectedDateOfBirth = String.format("%s %s,%s", dayOfBirthValue, monthOfBirthValue, yearOfBirthValue); // Format: "DD Month,YYYY"
         String expectedSubjects = String.join(", ", subjectValues); // Lista de subiecte concatenata cu virgula si spatiu ", "
         String expectedHobbies = String.join(", ", hobbiesValues); // Lista de hobbies concatenata cu virgula si spatiu ", "
 
         // Sample: "src/test/resources/1.png";  -> Trebuie sa luam doar ultima parte
-        String[] filePathStrings = pictureFilePath.split("/");
+        String[] filePathStrings = "src/test/resources/1.png".split("/");
         String expectedPicture = filePathStrings[filePathStrings.length - 1];
 
         String expectedAddress = currentAddressValue.replaceAll("\n", " ");
-        String expectedStateAndCity = stateValue + " " + cityValue;
+        String expectedStateAndCity = "NCR" + " " + "Delhi";
 
         Map<String, String> expectedValuesMap = new LinkedHashMap<>();
         expectedValuesMap.put("Student Name", expectedStudentName);
-        expectedValuesMap.put("Student Email", userEmailValue);
-        expectedValuesMap.put("Gender", genderValue);
-        expectedValuesMap.put("Mobile", mobileNumberValue);
+        expectedValuesMap.put("Student Email", expectedEmail);
+        expectedValuesMap.put("Gender", expectedGender);
+        expectedValuesMap.put("Mobile", expectedMobileNumber);
         expectedValuesMap.put("Date of Birth", expectedDateOfBirth);
         expectedValuesMap.put("Subjects", expectedSubjects);
         expectedValuesMap.put("Hobbies", expectedHobbies);
