@@ -19,7 +19,7 @@ public class AlertTest {
     JavascriptHelpers javascriptHelpers;
 
     @Test
-    public void automationMethod() throws InterruptedException {
+    public void automationMethod() {
         // Deschidem un browser de Chrome :)
         driver = new ChromeDriver();
 
