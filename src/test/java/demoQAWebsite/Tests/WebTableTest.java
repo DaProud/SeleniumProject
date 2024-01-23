@@ -38,22 +38,12 @@ public class WebTableTest {
         homePage = new HomePage(driver);
         commonPage = new CommonPage(driver);
 
-        // Facem un scroll ca sa fie elementul vizibil
-        // in caz ca nu incape pe pagina:)
-        // JavascriptExecutor ajuta atunci cand metodele standard din selenium nu ne ajuta :)
-//        javascriptHelpers.scrollDown(400);
-//
-//        // Declaram un element
-//        WebElement elementsField = driver.findElement(By.xpath("//h5[text()='Elements']"));
-//        elementsMethods.clickOnElement(elementsField);
         homePage.goToDesiredMenu("Elements");
-
-//        WebElement webTablesField = driver.findElement(By.xpath("//span[text()='Web Tables']"));
-//        elementsMethods.clickOnElement(webTablesField);
         commonPage.goToDesiredSubMenu("Web Tables");
 
-        List<WebElement> tableElements = driver.findElements(By.xpath("//div[@class='rt-tbody']/div/div[@class='rt-tr -even' or @class='rt-tr -odd']"));
-        int actualTableSize = tableElements.size();
+        List<WebElement> tableElements = driver.findElements(By.xpath(
+            "//div[@class='rt-tbody']/div/div[@class='rt-tr -even' or @class='rt-tr -odd']"));
+        int initialTableSize = tableElements.size();
 
         WebElement addNewRecordButton = driver.findElement(By.id("addNewRecordButton"));
         elementsMethods.clickOnElement(addNewRecordButton);
@@ -89,8 +79,9 @@ public class WebTableTest {
         WebElement submitButton = driver.findElement(By.id("submit"));
         elementsMethods.clickOnElement(submitButton);
 
-        List<WebElement> expectedTableElements = driver.findElements(By.xpath("//div[@class='rt-tbody']/div/div[@class='rt-tr -even' or @class='rt-tr -odd']"));
-        Integer expectedTableSize = actualTableSize +1;
+        List<WebElement> expectedTableElements = driver.findElements(By.xpath(
+            "//div[@class='rt-tbody']/div/div[@class='rt-tr -even' or @class='rt-tr -odd']"));
+        Integer expectedTableSize = initialTableSize +1;
 
         Assert.assertEquals(expectedTableElements.size(), expectedTableSize);
 
@@ -105,7 +96,6 @@ public class WebTableTest {
 
         Thread.sleep(3000);
         driver.close();
-
     }
 
 }

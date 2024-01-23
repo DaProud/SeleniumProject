@@ -25,10 +25,6 @@ public class JavascriptHelpers {
         scroll(0, y);
     }
 
-    public void scrollRight(int x) {
-        scroll(x, 0);
-    }
-
     public void forceClick(WebElement element) {
         // Cand nu poti face click pe element (eg o reclama se suprapune) se poate folosi "ciocanul"
         // JavascriptExecutor iti permite sa faci actiuni extra

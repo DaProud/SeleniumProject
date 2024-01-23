@@ -15,7 +15,6 @@ public class CommonPage {
     ElementsMethods elementsMethods;
     JavascriptHelpers javascriptHelpers;
 
-
     public CommonPage(WebDriver driver) {
         this.driver = driver;
         this.elementsMethods = new ElementsMethods(driver);

@@ -38,31 +38,21 @@ public class FramesTest {
         homePage = new HomePage(driver);
         commonPage = new CommonPage(driver);
 
-
-        // Facem un scroll ca sa fie elementul vizibil
-        // in caz ca nu incape pe pagina:)
-        // JavascriptExecutor ajuta atunci cand metodele standard din selenium nu ne ajuta :)
-//        javascriptHelpers.scrollDown(400);
-//
-//        WebElement alertsFramesAndWindowsElement = driver.findElement(By.xpath("//h5[text()='Alerts, Frame & Windows']"));
-//        elementsMethods.clickOnElement(alertsFramesAndWindowsElement);
         homePage.goToDesiredMenu("Alerts, Frame & Windows");
-
-//        WebElement framesElement = driver.findElement(By.xpath("//span[text()='Frames']"));
-//        elementsMethods.clickOnElement(framesElement);
         commonPage.goToDesiredSubMenu("Frames");
 
         javascriptHelpers.scrollDown(400);
 
+        // Frame 1:
         WebElement frame1Element = driver.findElement(By.id("frame1"));
         framesMethods.switchToFrame(frame1Element);
-
         WebElement sampleHeadingFromFrame1Element = driver.findElement(By.id("sampleHeading"));
         elementsMethods.displayContentOfElement(sampleHeadingFromFrame1Element);
 
         // Ne ducem cu focusul inapoi pe pagina principala
         framesMethods.switchToMainContent();
 
+        // Frame 2:
         WebElement frame2Element = driver.findElement(By.id("frame2"));
         framesMethods.switchToFrame(frame2Element);
         WebElement sampleHeadingFromFrame2Element = driver.findElement(By.id("sampleHeading"));

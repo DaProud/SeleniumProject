@@ -14,23 +14,22 @@ public class HomePage {
     WebDriver driver;
     ElementsMethods elementsMethods;
     JavascriptHelpers javascriptHelpers;
+    // Identificam WebElement-ele specifice pentru pagina
+    @FindBy(xpath = "//h5")
+    List<WebElement> elements;
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
         this.elementsMethods = new ElementsMethods(driver);
         this.javascriptHelpers = new JavascriptHelpers(driver);
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
-
-    // Identificam WebElement-ele specifice pentru pagina
-    @FindBy(xpath = "//h5")
-    List<WebElement> elements;
 
     // Facem metode specifice pentru pagina
     public void goToDesiredMenu(String menu) {
+        // Facem scroll ca sa fie vizibil elementul in pagina
         javascriptHelpers.scrollDown(400);
         elementsMethods.selectElementFromListByText(elements, menu);
     }
-
 
 }

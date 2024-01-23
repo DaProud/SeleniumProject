@@ -41,28 +41,9 @@ public class PracticeFormTest {
         homePage = new HomePage(driver);
         commonPage = new CommonPage(driver);
 
-//        // Facem un scroll ca sa fie elementul vizibil
-//        // in caz ca nu incape pe pagina:)
-//        javascriptHelpers.scrollDown(400);
-//
-////        WebElement formsElement = driver.findElement(By.xpath("//h5[text()='Forms']"));
-////        elementMethods.clickOnElement(formsElement);
-//
-//        List<WebElement> elements = driver.findElements(By.xpath("//h5"));
-//        elementMethods.selectElementFromListByText(elements, "Forms");
         homePage.goToDesiredMenu("Forms");
-
-//        WebElement practiceFormElement = driver.findElement(By.xpath("//span[text()='Practice Form']"));
-//        elementMethods.clickOnElement(practiceFormElement);
-
-//        List<WebElement> subElementsList = driver.findElements(By.xpath("//span[@class='text']"));
-//        elementMethods.selectElementFromListByText(subElementsList, "Practice Form");
-
         commonPage.goToDesiredSubMenu("Practice Form");
 
-
-//        JavascriptExecutor executor = (JavascriptExecutor) driver;
-//        executor.executeScript("document.body.style.zoom = '70%'");
         javascriptHelpers.scrollDown(400);
 
         WebElement firstNameElement = driver.findElement(By.id("firstName"));
@@ -81,7 +62,6 @@ public class PracticeFormTest {
         genderElements.add(genderMaleElement);
         genderElements.add(genderFemaleElement);
         genderElements.add(genderOtherElement);
-
         elementMethods.selectElementFromListByText(genderElements, "Male");
 
         WebElement mobileNumberElement = driver.findElement(By.cssSelector("input[placeholder='Mobile Number']"));
@@ -106,7 +86,6 @@ public class PracticeFormTest {
         WebElement dayOfBirthElement = driver.findElement(By.xpath(dayOfBirthxPath));
         elementMethods.clickOnElement(dayOfBirthElement);
 
-
         // Subjects:
         List<String> subjectValues = new ArrayList<>();
         subjectValues.add("Social Studies");
@@ -128,7 +107,6 @@ public class PracticeFormTest {
         hobbyElements.add(hobbiesSportsElement);
         hobbyElements.add(hobbiesReadingElement);
         hobbyElements.add(hobbiesMusicElement);
-
         elementMethods.checkMultipleElementsByListOfValues(hobbyElements, hobbiesValues);
 
         WebElement uploadPictureElement = driver.findElement(By.id("uploadPicture"));
@@ -143,8 +121,6 @@ public class PracticeFormTest {
 
         // State:
         WebElement stateElement = driver.findElement(By.id("react-select-3-input"));
-        // Cand nu poti face click pe element (eg o reclama se suprapune) se poate folosi "ciocanul"
-        // JavascriptExecutor iti permite sa faci actiuni extra
         javascriptHelpers.forceClick(stateElement);
         elementMethods.fillElementWithEnter(stateElement, "NCR");
 
