@@ -2,6 +2,8 @@ package demoQAWebsite.Tests;
 
 import demoQAWebsite.HelperMethods.ElementsMethods;
 import demoQAWebsite.HelperMethods.JavascriptHelpers;
+import demoQAWebsite.pages.CommonPage;
+import demoQAWebsite.pages.HomePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,6 +18,8 @@ public class WebTableTest {
     WebDriver driver;
     ElementsMethods elementsMethods;
     JavascriptHelpers javascriptHelpers;
+    HomePage homePage;
+    CommonPage commonPage;
 
     @Test
     public void automationMethod() throws InterruptedException {
@@ -31,18 +35,22 @@ public class WebTableTest {
 
         elementsMethods = new ElementsMethods(driver);
         javascriptHelpers = new JavascriptHelpers(driver);
+        homePage = new HomePage(driver);
+        commonPage = new CommonPage(driver);
 
         // Facem un scroll ca sa fie elementul vizibil
         // in caz ca nu incape pe pagina:)
         // JavascriptExecutor ajuta atunci cand metodele standard din selenium nu ne ajuta :)
-        javascriptHelpers.scrollDown(400);
+//        javascriptHelpers.scrollDown(400);
+//
+//        // Declaram un element
+//        WebElement elementsField = driver.findElement(By.xpath("//h5[text()='Elements']"));
+//        elementsMethods.clickOnElement(elementsField);
+        homePage.goToDesiredMenu("Elements");
 
-        // Declaram un element
-        WebElement elementsField = driver.findElement(By.xpath("//h5[text()='Elements']"));
-        elementsMethods.clickOnElement(elementsField);
-
-        WebElement webTablesField = driver.findElement(By.xpath("//span[text()='Web Tables']"));
-        elementsMethods.clickOnElement(webTablesField);
+//        WebElement webTablesField = driver.findElement(By.xpath("//span[text()='Web Tables']"));
+//        elementsMethods.clickOnElement(webTablesField);
+        commonPage.goToDesiredSubMenu("Web Tables");
 
         List<WebElement> tableElements = driver.findElements(By.xpath("//div[@class='rt-tbody']/div/div[@class='rt-tr -even' or @class='rt-tr -odd']"));
         int actualTableSize = tableElements.size();

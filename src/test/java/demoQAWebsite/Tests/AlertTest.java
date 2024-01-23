@@ -3,6 +3,8 @@ package demoQAWebsite.Tests;
 import demoQAWebsite.HelperMethods.AlertMethods;
 import demoQAWebsite.HelperMethods.ElementsMethods;
 import demoQAWebsite.HelperMethods.JavascriptHelpers;
+import demoQAWebsite.pages.CommonPage;
+import demoQAWebsite.pages.HomePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,6 +19,8 @@ public class AlertTest {
     ElementsMethods elementMethods;
     AlertMethods alertMethods;
     JavascriptHelpers javascriptHelpers;
+    HomePage homePage;
+    CommonPage commonPage;
 
     @Test
     public void automationMethod() {
@@ -36,14 +40,19 @@ public class AlertTest {
         elementMethods = new ElementsMethods(driver);
         alertMethods = new AlertMethods(driver);
         javascriptHelpers = new JavascriptHelpers(driver);
+        homePage = new HomePage(driver);
+        commonPage = new CommonPage(driver);
 
-        javascriptHelpers.scrollDown(400);
+//        javascriptHelpers.scrollDown(400);
+//
+//        WebElement alertsFramesAndWindowsElement = driver.findElement(By.xpath("//h5[text()='Alerts, Frame & Windows']"));
+//        elementMethods.clickOnElement(alertsFramesAndWindowsElement);
+        homePage.goToDesiredMenu("Alerts, Frame & Windows");
 
-        WebElement alertsFramesAndWindowsElement = driver.findElement(By.xpath("//h5[text()='Alerts, Frame & Windows']"));
-        elementMethods.clickOnElement(alertsFramesAndWindowsElement);
+//        WebElement alertsElement = driver.findElement(By.xpath("//span[text()='Alerts']"));
+//        elementMethods.clickOnElement(alertsElement);
+        commonPage.goToDesiredSubMenu("Alerts");
 
-        WebElement alertsElement = driver.findElement(By.xpath("//span[text()='Alerts']"));
-        elementMethods.clickOnElement(alertsElement);
 
         // Alert simplu: Doar Text si OK button
         WebElement alertOkButton = driver.findElement(By.id("alertButton"));

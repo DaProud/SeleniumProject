@@ -2,6 +2,8 @@ package demoQAWebsite.Tests;
 
 import demoQAWebsite.HelperMethods.ElementsMethods;
 import demoQAWebsite.HelperMethods.JavascriptHelpers;
+import demoQAWebsite.pages.CommonPage;
+import demoQAWebsite.pages.HomePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,6 +21,8 @@ public class PracticeFormTest {
     WebDriver driver;
     ElementsMethods elementMethods;
     JavascriptHelpers javascriptHelpers;
+    HomePage homePage;
+    CommonPage commonPage;
 
     @Test
     public void automationMethod() throws InterruptedException {
@@ -34,16 +38,28 @@ public class PracticeFormTest {
 
         elementMethods = new ElementsMethods(driver);
         javascriptHelpers = new JavascriptHelpers(driver);
+        homePage = new HomePage(driver);
+        commonPage = new CommonPage(driver);
 
-        // Facem un scroll ca sa fie elementul vizibil
-        // in caz ca nu incape pe pagina:)
-        javascriptHelpers.scrollDown(400);
+//        // Facem un scroll ca sa fie elementul vizibil
+//        // in caz ca nu incape pe pagina:)
+//        javascriptHelpers.scrollDown(400);
+//
+////        WebElement formsElement = driver.findElement(By.xpath("//h5[text()='Forms']"));
+////        elementMethods.clickOnElement(formsElement);
+//
+//        List<WebElement> elements = driver.findElements(By.xpath("//h5"));
+//        elementMethods.selectElementFromListByText(elements, "Forms");
+        homePage.goToDesiredMenu("Forms");
 
-        WebElement formsElement = driver.findElement(By.xpath("//h5[text()='Forms']"));
-        elementMethods.clickOnElement(formsElement);
+//        WebElement practiceFormElement = driver.findElement(By.xpath("//span[text()='Practice Form']"));
+//        elementMethods.clickOnElement(practiceFormElement);
 
-        WebElement practiceFormElement = driver.findElement(By.xpath("//span[text()='Practice Form']"));
-        elementMethods.clickOnElement(practiceFormElement);
+//        List<WebElement> subElementsList = driver.findElements(By.xpath("//span[@class='text']"));
+//        elementMethods.selectElementFromListByText(subElementsList, "Practice Form");
+
+        commonPage.goToDesiredSubMenu("Practice Form");
+
 
 //        JavascriptExecutor executor = (JavascriptExecutor) driver;
 //        executor.executeScript("document.body.style.zoom = '70%'");

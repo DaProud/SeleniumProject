@@ -3,6 +3,8 @@ package demoQAWebsite.Tests;
 import demoQAWebsite.HelperMethods.ElementsMethods;
 import demoQAWebsite.HelperMethods.FramesMethods;
 import demoQAWebsite.HelperMethods.JavascriptHelpers;
+import demoQAWebsite.pages.CommonPage;
+import demoQAWebsite.pages.HomePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,6 +17,8 @@ public class FramesTest {
     JavascriptHelpers javascriptHelpers;
     ElementsMethods elementsMethods;
     FramesMethods framesMethods;
+    HomePage homePage;
+    CommonPage commonPage;
 
     @Test
     public void automationMethod() throws InterruptedException {
@@ -31,18 +35,22 @@ public class FramesTest {
         javascriptHelpers = new JavascriptHelpers(driver);
         elementsMethods = new ElementsMethods(driver);
         framesMethods = new FramesMethods(driver);
+        homePage = new HomePage(driver);
+        commonPage = new CommonPage(driver);
 
 
         // Facem un scroll ca sa fie elementul vizibil
         // in caz ca nu incape pe pagina:)
         // JavascriptExecutor ajuta atunci cand metodele standard din selenium nu ne ajuta :)
-        javascriptHelpers.scrollDown(400);
+//        javascriptHelpers.scrollDown(400);
+//
+//        WebElement alertsFramesAndWindowsElement = driver.findElement(By.xpath("//h5[text()='Alerts, Frame & Windows']"));
+//        elementsMethods.clickOnElement(alertsFramesAndWindowsElement);
+        homePage.goToDesiredMenu("Alerts, Frame & Windows");
 
-        WebElement alertsFramesAndWindowsElement = driver.findElement(By.xpath("//h5[text()='Alerts, Frame & Windows']"));
-        elementsMethods.clickOnElement(alertsFramesAndWindowsElement);
-
-        WebElement framesElement = driver.findElement(By.xpath("//span[text()='Frames']"));
-        elementsMethods.clickOnElement(framesElement);
+//        WebElement framesElement = driver.findElement(By.xpath("//span[text()='Frames']"));
+//        elementsMethods.clickOnElement(framesElement);
+        commonPage.goToDesiredSubMenu("Frames");
 
         javascriptHelpers.scrollDown(400);
 

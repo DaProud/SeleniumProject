@@ -34,6 +34,7 @@ public class ElementsMethods {
         for (WebElement element : elementsList) {
             if (element.getText().equals(value)) {
                 clickOnElement(element);
+                break;
             }
         }
     }

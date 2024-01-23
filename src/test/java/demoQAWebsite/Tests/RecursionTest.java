@@ -25,6 +25,8 @@ public class RecursionTest {
         // Accesam o pagina Web
         driver.get("https://demoqa.com/sortable");
 
+        // Tema - De intrat succesiv folosind ce am invatat
+
         Actions actions = new Actions(driver);
         List<WebElement> listElement = driver.findElements(By.xpath("//div[@id='demo-tabpane-list']//div[@class='list-group-item list-group-item-action']"));
         for (int i = 0; i < listElement.size() - 1; i++) {
