@@ -1,13 +1,9 @@
 package demoQAWebsite.Tests;
 
-import demoQAWebsite.HelperMethods.AlertMethods;
-import demoQAWebsite.HelperMethods.ElementsMethods;
-import demoQAWebsite.HelperMethods.JavascriptHelpers;
+import demoQAWebsite.pages.AlertsPage;
 import demoQAWebsite.pages.CommonPage;
 import demoQAWebsite.pages.HomePage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
@@ -16,11 +12,9 @@ import java.time.Duration;
 public class AlertTest {
 
     public WebDriver driver;
-    ElementsMethods elementMethods;
-    AlertMethods alertMethods;
-    JavascriptHelpers javascriptHelpers;
     HomePage homePage;
     CommonPage commonPage;
+    AlertsPage alertsPage;
 
     @Test
     public void automationMethod() {
@@ -37,34 +31,26 @@ public class AlertTest {
         // definim un wait implicit pentru un interval maxim de timp
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        elementMethods = new ElementsMethods(driver);
-        alertMethods = new AlertMethods(driver);
-        javascriptHelpers = new JavascriptHelpers(driver);
         homePage = new HomePage(driver);
         commonPage = new CommonPage(driver);
+        alertsPage = new AlertsPage(driver);
 
         homePage.goToDesiredMenu("Alerts, Frame & Windows");
         commonPage.goToDesiredSubMenu("Alerts");
 
         // Alert simplu: Doar Text si OK button
-        WebElement alertOkButton = driver.findElement(By.id("alertButton"));
-        elementMethods.clickOnElement(alertOkButton);
-        alertMethods.interactWithAlertOK();
+        alertsPage.interactWithSimpleAlert();
 
         // Alert cu delay la afisare
-        WebElement alertDelayButton = driver.findElement(By.id("timerAlertButton"));
-        elementMethods.clickOnElement(alertDelayButton);
-        alertMethods.interactWithDelayAlert();
+        alertsPage.interactWithDelayedAlert();
 
         // Alert cu Confirm - OK/cancel
-        WebElement alertConfirmButton = driver.findElement(By.id("confirmButton"));
-        elementMethods.clickOnElement(alertConfirmButton);
-        alertMethods.interactWithAlertCancel();
+        alertsPage.interactWithConfirmAlert(true);
+        // TODO: Assert the text that is displayed upon click... :)
 
         // Alert cu Prompt Text
-        WebElement alertPromptButton = driver.findElement(By.id("promtButton"));
-        elementMethods.clickOnElement(alertPromptButton);
-        alertMethods.interactWithPromptAlertOK("Some automation text here...");
+        alertsPage.interactWithPromptAlert("Some automation text here...", true);
+        // TODO: Assert the text that is displayed upon click... :)
 
         driver.quit();
     }
