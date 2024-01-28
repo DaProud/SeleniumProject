@@ -40,10 +40,15 @@ public class AlertMethods {
         alert.accept();
     }
 
-    public void interactWithPromptAlertOK(String text) {
+    public void interactWithPromptAlertAndConfirm(String text) {
         Alert alert = driver.switchTo().alert();
         alert.sendKeys(text);
         alert.accept();
     }
 
+    public void interactWithPromptAlertAndCancel(String text) {
+        Alert alert = driver.switchTo().alert();
+        alert.sendKeys(text);
+        alert.dismiss();
+    }
 }

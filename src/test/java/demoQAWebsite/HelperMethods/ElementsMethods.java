@@ -45,7 +45,7 @@ public class ElementsMethods {
         }
     }
 
-    public void fillElementWithEnter(WebElement element, String value) {
+    public void fillElementFollowedByEnter(WebElement element, String value) {
         element.sendKeys(value);
         element.sendKeys(Keys.ENTER);
     }
@@ -87,17 +87,13 @@ public class ElementsMethods {
         }
     }
 
-    public void displayContentOfElement(WebElement element) {
-        System.out.println("Textul din element este: " + element.getText());
-    }
-
     public void fillWithActions(WebElement element, String value) {
         actions.sendKeys(value).perform();
-        waitVisibilityElement(element);
+        waitVisibilityOfElement(element);
         actions.sendKeys(Keys.ENTER).perform();
     }
 
-    public void waitVisibilityElement(WebElement element) {
+    public void waitVisibilityOfElement(WebElement element) {
         // definim un wait explicit ca sa astepte dupa vizibilitatea elementului
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOf(element));

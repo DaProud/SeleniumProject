@@ -2,6 +2,7 @@ package demoQAWebsite.pages;
 
 import demoQAWebsite.HelperMethods.ElementsMethods;
 import demoQAWebsite.HelperMethods.JavascriptHelpers;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -37,12 +38,24 @@ public class PracticeFormPage {
     WebElement readingHobbyElement;
     @FindBy(xpath = "//label[@for='hobbies-checkbox-3'] ")
     WebElement musicHobbyElement;
-
 //    @FindBy(xpath = "//div[@id='subjectsContainer']")
 //    WebElement subjectsElement;
-
     @FindBy(id = "subjectsInput")
     WebElement subjectsElement;
+    @FindBy(id = "dateOfBirthInput")
+    WebElement dateOfBirthElement;
+    @FindBy(xpath = "//select[@class='react-datepicker__year-select']")
+    WebElement yearOfBirthElement;
+    @FindBy(xpath = "//select[@class='react-datepicker__month-select']")
+    WebElement monthOfBirthElement;
+    @FindBy(id = "uploadPicture")
+    WebElement uploadPictureElement;
+    @FindBy(id = "react-select-3-input")
+    WebElement stateElement;
+    @FindBy(id = "react-select-4-input")
+    WebElement cityElement;
+    @FindBy(id = "submit")
+    WebElement submitElement;
 
     public PracticeFormPage(WebDriver driver) {
         this.driver = driver;
@@ -92,4 +105,30 @@ public class PracticeFormPage {
         elementsMethods.clickMultipleValues(hobbiesElement, hobbies);
     }
 
+    public void completeDateOfBirth(int year, int month, int day) {
+        elementsMethods.clickOnElement(dateOfBirthElement);
+        elementsMethods.selectByValue(yearOfBirthElement, String.valueOf(year));
+        elementsMethods.selectByValue(monthOfBirthElement, String.valueOf(month - 1));
+        javascriptHelpers.scrollDown(400);
+        // TODO: refactor this - sa accepte orice date, nu doar cele >=10, din cauza formatului day-001 in xPath
+        String dayOfBirthXPath = "//div[@class='react-datepicker__day react-datepicker__day--0" + day + "']";
+        WebElement dayOfBirthElement = driver.findElement(By.xpath(dayOfBirthXPath));
+        elementsMethods.clickOnElement(dayOfBirthElement);
+    }
+
+    public void uploadPicture() {
+        elementsMethods.uploadPicture(uploadPictureElement);
+    }
+
+    public void completeStateAndCity(String state, String city) {
+        javascriptHelpers.forceClick(stateElement);
+        elementsMethods.fillElementFollowedByEnter(stateElement, state);
+
+        javascriptHelpers.forceClick(cityElement);
+        elementsMethods.fillElementFollowedByEnter(cityElement, city);
+    }
+
+    public void submitForm() {
+        javascriptHelpers.forceClick(submitElement);
+    }
 }
