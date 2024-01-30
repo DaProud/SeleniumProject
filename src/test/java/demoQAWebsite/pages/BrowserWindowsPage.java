@@ -8,10 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
-public class BrowserWindowsPage {
-    WebDriver driver;
-    ElementsMethods elementsMethods;
-    WindowsMethods windowsMethods;
+public class BrowserWindowsPage extends CommonPage{
     @FindBy(id = "tabButton")
     WebElement newTabButtonElement;
     @FindBy(id = "sampleHeading")
@@ -22,10 +19,7 @@ public class BrowserWindowsPage {
     WebElement sampleHeadingFromNewWindowElement;
 
     public BrowserWindowsPage(WebDriver driver) {
-        this.driver = driver;
-        this.elementsMethods = new ElementsMethods(driver);
-        this.windowsMethods = new WindowsMethods(driver);
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
     public void interactWithTheNewTab() {

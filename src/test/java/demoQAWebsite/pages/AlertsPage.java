@@ -7,11 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class AlertsPage {
-
-    WebDriver driver;
-    ElementsMethods elementsMethods;
-    AlertMethods alertMethods;
+public class AlertsPage extends CommonPage{
 
     @FindBy(id = "alertButton")
     WebElement alertOkButtonElement;
@@ -23,10 +19,7 @@ public class AlertsPage {
     WebElement alertPromptButtonElement;
 
     public AlertsPage(WebDriver driver) {
-        this.driver = driver;
-        this.elementsMethods = new ElementsMethods(driver);
-        this.alertMethods = new AlertMethods(driver);
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
     public void interactWithSimpleAlert() {

@@ -9,11 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
-public class FramesPage {
-    WebDriver driver;
-    ElementsMethods elementsMethods;
-    JavascriptHelpers javascriptHelpers;
-    FramesMethods framesMethods;
+public class FramesPage extends CommonPage{
     @FindBy(id = "frame1")
     WebElement frame1Element;
     @FindBy(id = "sampleHeading")
@@ -24,11 +20,7 @@ public class FramesPage {
     WebElement sampleHeadingFromFrame2Element;
 
     public FramesPage(WebDriver driver) {
-        this.driver = driver;
-        this.elementsMethods = new ElementsMethods(driver);
-        this.javascriptHelpers = new JavascriptHelpers(driver);
-        this.framesMethods = new FramesMethods(driver);
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
     public void interactWithFrame1() {

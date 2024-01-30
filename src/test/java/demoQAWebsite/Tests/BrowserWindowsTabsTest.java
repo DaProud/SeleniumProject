@@ -1,6 +1,7 @@
 package demoQAWebsite.Tests;
 
 import demoQAWebsite.HelperMethods.WindowsMethods;
+import demoQAWebsite.ShareData.ShareData;
 import demoQAWebsite.pages.BrowserWindowsPage;
 import demoQAWebsite.pages.CommonPage;
 import demoQAWebsite.pages.HomePage;
@@ -8,9 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
-public class BrowserWindowsTabsTest {
+public class BrowserWindowsTabsTest extends ShareData {
 
-    WebDriver driver;
     WindowsMethods windowsMethods;
     HomePage homePage;
     CommonPage commonPage;
@@ -18,15 +18,6 @@ public class BrowserWindowsTabsTest {
 
     @Test
     public void automationMethod() throws InterruptedException {
-        // Deschidem un browser de Chrome :)
-        driver = new ChromeDriver();
-
-        // Facem browserul in modul Maximize - pentru a evita repozitionarea
-        // elementelor cu marimea default a ferestrei
-        driver.manage().window().maximize();
-
-        // Accesam o pagina Web
-        driver.get("https://demoqa.com/");
 
         windowsMethods = new WindowsMethods(driver);
         homePage = new HomePage(driver);
@@ -43,7 +34,5 @@ public class BrowserWindowsTabsTest {
         // New Window:
         browserWindowsPage.interactWithTheNewWindow();
         windowsMethods.switchToMainWindow();
-
-        driver.quit();
     }
 }

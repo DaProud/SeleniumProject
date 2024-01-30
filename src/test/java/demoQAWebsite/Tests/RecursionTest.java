@@ -1,5 +1,6 @@
 package demoQAWebsite.Tests;
 
+import demoQAWebsite.ShareData.ShareData;
 import demoQAWebsite.pages.CommonPage;
 import demoQAWebsite.pages.HomePage;
 import org.openqa.selenium.By;
@@ -11,24 +12,13 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class RecursionTest {
+public class RecursionTest extends ShareData {
 
-    public WebDriver driver;
     HomePage homePage;
     CommonPage commonPage;
 
     @Test
     public void parcurgereLista() {
-        // Deschidem un browser de Chrome :)
-        driver = new ChromeDriver();
-
-        // Facem browserul in modul Maximize - pentru a evita repozitionarea
-        // elementelor cu marimea default a ferestrei
-        driver.manage().window().maximize();
-
-        // Accesam o pagina Web
-        driver.get("https://demoqa.com/");
-
         // Tema - De intrat succesiv folosind ce am invatat
         homePage = new HomePage(driver);
         commonPage = new CommonPage(driver);
@@ -50,8 +40,6 @@ public class RecursionTest {
                 .build()
                 .perform();
         }
-
-        driver.close();
     }
 
 }

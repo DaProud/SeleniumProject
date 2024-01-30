@@ -1,5 +1,6 @@
 package demoQAWebsite.Tests;
 
+import demoQAWebsite.ShareData.ShareData;
 import demoQAWebsite.pages.CommonPage;
 import demoQAWebsite.pages.HomePage;
 import demoQAWebsite.pages.PracticeFormPage;
@@ -15,24 +16,14 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public class PracticeFormTest {
+public class PracticeFormTest extends ShareData {
 
-    WebDriver driver;
     HomePage homePage;
     CommonPage commonPage;
     PracticeFormPage practiceFormPage;
 
     @Test
     public void automationMethod() {
-        // Deschidem un browser de Chrome :)
-        driver = new ChromeDriver();
-
-        // Facem browserul in modul Maximize - pentru a evita repozitionarea
-        // elementelor cu marimea default a ferestrei
-        driver.manage().window().maximize();
-
-        // Accesam o pagina Web
-        driver.get("https://demoqa.com/");
 
         homePage = new HomePage(driver);
         commonPage = new CommonPage(driver);
