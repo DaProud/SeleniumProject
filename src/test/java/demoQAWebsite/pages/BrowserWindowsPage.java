@@ -1,22 +1,19 @@
 package demoQAWebsite.pages;
 
-import demoQAWebsite.HelperMethods.ElementsMethods;
-import demoQAWebsite.HelperMethods.WindowsMethods;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
-public class BrowserWindowsPage extends CommonPage{
+public class BrowserWindowsPage extends CommonPage {
     @FindBy(id = "tabButton")
-    WebElement newTabButtonElement;
+    private WebElement newTabButtonElement;
     @FindBy(id = "sampleHeading")
-    WebElement sampleHeadingFromNewTabElement;
+    private WebElement sampleHeadingFromNewTabElement;
     @FindBy(id = "windowButton")
-    WebElement newWindowButtonElement;
+    private WebElement newWindowButtonElement;
     @FindBy(id = "sampleHeading")
-    WebElement sampleHeadingFromNewWindowElement;
+    private WebElement sampleHeadingFromNewWindowElement;
 
     public BrowserWindowsPage(WebDriver driver) {
         super(driver);
@@ -28,6 +25,7 @@ public class BrowserWindowsPage extends CommonPage{
         windowsMethods.switchToOpenedTab();
         Assert.assertEquals(sampleHeadingFromNewTabElement.getText(), "This is a sample page");
         windowsMethods.closeTab();
+        windowsMethods.switchToMainWindow();
     }
 
     public void interactWithTheNewWindow() {
@@ -36,6 +34,7 @@ public class BrowserWindowsPage extends CommonPage{
         windowsMethods.switchToOpenedWindow();
         Assert.assertEquals(sampleHeadingFromNewWindowElement.getText(), "This is a sample page");
         windowsMethods.closeWindow();
+        windowsMethods.switchToMainWindow();
     }
 
 }

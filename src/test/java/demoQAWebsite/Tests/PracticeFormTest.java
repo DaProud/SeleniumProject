@@ -5,9 +5,7 @@ import demoQAWebsite.pages.CommonPage;
 import demoQAWebsite.pages.HomePage;
 import demoQAWebsite.pages.PracticeFormPage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -25,9 +23,9 @@ public class PracticeFormTest extends ShareData {
     @Test
     public void automationMethod() {
 
-        homePage = new HomePage(driver);
-        commonPage = new CommonPage(driver);
-        practiceFormPage = new PracticeFormPage(driver);
+        homePage = new HomePage(getDriver());
+        commonPage = new CommonPage(getDriver());
+        practiceFormPage = new PracticeFormPage(getDriver());
 
         homePage.goToDesiredMenu("Forms");
         commonPage.goToDesiredSubMenu("Practice Form");
@@ -87,12 +85,12 @@ public class PracticeFormTest extends ShareData {
         int index = 0;
         for (String key : expectedValuesMap.keySet()) {
             String labelElementXPath = "//tbody/tr[" + (index + 1) + "]/td[1]";
-            WebElement labelElement = driver.findElement(By.xpath(labelElementXPath));
+            WebElement labelElement = getDriver().findElement(By.xpath(labelElementXPath));
             System.out.println("Label Element: " + labelElement.getText());
             Assert.assertEquals(labelElement.getText(), key);
 
             String valueElementXPath = "//tbody/tr[" + (index + 1) + "]/td[2]";
-            WebElement valueElement = driver.findElement(By.xpath(valueElementXPath));
+            WebElement valueElement = getDriver().findElement(By.xpath(valueElementXPath));
             System.out.println("Value Element: " + valueElement.getText());
             Assert.assertEquals(valueElement.getText(), expectedValuesMap.get(key));
 
@@ -113,6 +111,5 @@ public class PracticeFormTest extends ShareData {
 //
 //         */
 //
-        driver.close();
     }
 }

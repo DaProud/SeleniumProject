@@ -4,11 +4,7 @@ import demoQAWebsite.ShareData.ShareData;
 import demoQAWebsite.pages.AlertsPage;
 import demoQAWebsite.pages.CommonPage;
 import demoQAWebsite.pages.HomePage;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
 
 public class AlertTest extends ShareData {
 
@@ -19,9 +15,9 @@ public class AlertTest extends ShareData {
     @Test
     public void automationMethod() {
 
-        homePage = new HomePage(driver);
-        commonPage = new CommonPage(driver);
-        alertsPage = new AlertsPage(driver);
+        homePage = new HomePage(getDriver());
+        commonPage = new CommonPage(getDriver());
+        alertsPage = new AlertsPage(getDriver());
 
         homePage.goToDesiredMenu("Alerts, Frame & Windows");
         commonPage.goToDesiredSubMenu("Alerts");

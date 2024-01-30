@@ -23,6 +23,10 @@ public class WebTableTest {
 
     @Test
     public void automationMethod() throws InterruptedException {
+
+        // TODO: De creat pagina WebTablePage class
+        //  De folosit paginile noi ShareData and CommonPage
+
         // Deschidem un browser de Chrome :)
         driver = new ChromeDriver();
 

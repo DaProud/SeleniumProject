@@ -1,22 +1,19 @@
 package demoQAWebsite.pages;
 
-import demoQAWebsite.HelperMethods.AlertMethods;
-import demoQAWebsite.HelperMethods.ElementsMethods;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class AlertsPage extends CommonPage{
+public class AlertsPage extends CommonPage {
 
     @FindBy(id = "alertButton")
-    WebElement alertOkButtonElement;
+    private WebElement alertOkButtonElement;
     @FindBy(id = "timerAlertButton")
-    WebElement delayedAlertButtonElement;
+    private WebElement delayedAlertButtonElement;
     @FindBy(id = "confirmButton")
-    WebElement alertConfirmButtonElement;
+    private WebElement alertConfirmButtonElement;
     @FindBy(id = "promtButton")
-    WebElement alertPromptButtonElement;
+    private WebElement alertPromptButtonElement;
 
     public AlertsPage(WebDriver driver) {
         super(driver);
@@ -45,7 +42,7 @@ public class AlertsPage extends CommonPage{
         }
     }
 
-    public void interactWithPromptAlert(String inputText, boolean isConfirmed){
+    public void interactWithPromptAlert(String inputText, boolean isConfirmed) {
         // Alert cu Prompt Text
         elementsMethods.clickOnElement(alertPromptButtonElement);
         if (isConfirmed) {

@@ -10,8 +10,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
 public class BrowserWindowsTabsTest extends ShareData {
-
-    WindowsMethods windowsMethods;
     HomePage homePage;
     CommonPage commonPage;
     BrowserWindowsPage browserWindowsPage;
@@ -19,20 +17,19 @@ public class BrowserWindowsTabsTest extends ShareData {
     @Test
     public void automationMethod() throws InterruptedException {
 
-        windowsMethods = new WindowsMethods(driver);
-        homePage = new HomePage(driver);
-        commonPage = new CommonPage(driver);
-        browserWindowsPage = new BrowserWindowsPage(driver);
+        homePage = new HomePage(getDriver());
+        commonPage = new CommonPage(getDriver());
+        browserWindowsPage = new BrowserWindowsPage(getDriver());
 
         homePage.goToDesiredMenu("Alerts, Frame & Windows");
         commonPage.goToDesiredSubMenu("Browser Windows");
 
         // New Tab:
         browserWindowsPage.interactWithTheNewTab();
-        windowsMethods.switchToMainWindow();
+
 
         // New Window:
         browserWindowsPage.interactWithTheNewWindow();
-        windowsMethods.switchToMainWindow();
+
     }
 }

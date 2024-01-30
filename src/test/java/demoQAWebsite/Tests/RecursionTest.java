@@ -20,16 +20,16 @@ public class RecursionTest extends ShareData {
     @Test
     public void parcurgereLista() {
         // Tema - De intrat succesiv folosind ce am invatat
-        homePage = new HomePage(driver);
-        commonPage = new CommonPage(driver);
+        homePage = new HomePage(getDriver());
+        commonPage = new CommonPage(getDriver());
 
         homePage.goToDesiredMenu("Interactions");
         commonPage.goToDesiredSubMenu("Sortable");
 
         // Decalam elementele prin Drag and Drop
-        Actions actions = new Actions(driver);
+        Actions actions = new Actions(getDriver());
         String listElementsXPath = "//div[@id='demo-tabpane-list']//div[@class='list-group-item list-group-item-action']";
-        List<WebElement> elementsList = driver.findElements(By.xpath(listElementsXPath));
+        List<WebElement> elementsList = getDriver().findElements(By.xpath(listElementsXPath));
         for (int i = 0; i < elementsList.size() - 1; i++) {
             WebElement currentElement = elementsList.get(i);
             WebElement nextElement = elementsList.get(i + 1);

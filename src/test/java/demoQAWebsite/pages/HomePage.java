@@ -1,20 +1,17 @@
 package demoQAWebsite.pages;
 
-import demoQAWebsite.HelperMethods.ElementsMethods;
-import demoQAWebsite.HelperMethods.JavascriptHelpers;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class HomePage extends CommonPage{
+public class HomePage extends CommonPage {
     // Identificam WebElement-ele specifice pentru pagina
     @FindBy(xpath = "//h5")
-    List<WebElement> elements;
+    private List<WebElement> elements;
     @FindBy(xpath = "//p[text()='Consent']")
-    WebElement consentElement;
+    private WebElement consentElement;
 
     public HomePage(WebDriver driver) {
         super(driver);

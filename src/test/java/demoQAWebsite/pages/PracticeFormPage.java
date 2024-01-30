@@ -1,57 +1,54 @@
 package demoQAWebsite.pages;
 
-import demoQAWebsite.HelperMethods.ElementsMethods;
-import demoQAWebsite.HelperMethods.JavascriptHelpers;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PracticeFormPage extends CommonPage{
+public class PracticeFormPage extends CommonPage {
     @FindBy(id = "firstName")
-    WebElement firstNameElement;
+    private WebElement firstNameElement;
     @FindBy(id = "lastName")
-    WebElement lastNameElement;
+    private WebElement lastNameElement;
     @FindBy(id = "userEmail")
-    WebElement emailElement;
+    private WebElement emailElement;
     @FindBy(css = "input[placeholder='Mobile Number']")
-    WebElement mobileNumberElement;
+    private WebElement mobileNumberElement;
     @FindBy(id = "currentAddress")
-    WebElement addressElement;
+    private WebElement addressElement;
     @FindBy(xpath = "//label[@for='gender-radio-1']")
-    WebElement maleGenderElement;
+    private WebElement maleGenderElement;
     @FindBy(xpath = "//label[@for='gender-radio-2']")
-    WebElement femaleGenderElement;
+    private WebElement femaleGenderElement;
     @FindBy(xpath = "//label[@for='gender-radio-3']")
-    WebElement otherGenderElement;
+    private WebElement otherGenderElement;
     @FindBy(xpath = "//label[@for='hobbies-checkbox-1'] ")
-    WebElement sportHobbyElement;
+    private WebElement sportHobbyElement;
     @FindBy(xpath = "//label[@for='hobbies-checkbox-2'] ")
-    WebElement readingHobbyElement;
+    private WebElement readingHobbyElement;
     @FindBy(xpath = "//label[@for='hobbies-checkbox-3'] ")
-    WebElement musicHobbyElement;
-//    @FindBy(xpath = "//div[@id='subjectsContainer']")
-//    WebElement subjectsElement;
+    private WebElement musicHobbyElement;
+    //    @FindBy(xpath = "//div[@id='subjectsContainer']")
+//    private WebElement subjectsElement;
     @FindBy(id = "subjectsInput")
-    WebElement subjectsElement;
+    private WebElement subjectsElement;
     @FindBy(id = "dateOfBirthInput")
-    WebElement dateOfBirthElement;
+    private WebElement dateOfBirthElement;
     @FindBy(xpath = "//select[@class='react-datepicker__year-select']")
-    WebElement yearOfBirthElement;
+    private WebElement yearOfBirthElement;
     @FindBy(xpath = "//select[@class='react-datepicker__month-select']")
-    WebElement monthOfBirthElement;
+    private WebElement monthOfBirthElement;
     @FindBy(id = "uploadPicture")
-    WebElement uploadPictureElement;
+    private WebElement uploadPictureElement;
     @FindBy(id = "react-select-3-input")
-    WebElement stateElement;
+    private WebElement stateElement;
     @FindBy(id = "react-select-4-input")
-    WebElement cityElement;
+    private WebElement cityElement;
     @FindBy(id = "submit")
-    WebElement submitElement;
+    private WebElement submitElement;
 
     public PracticeFormPage(WebDriver driver) {
         super(driver);

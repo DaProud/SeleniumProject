@@ -24,7 +24,7 @@ public class CommonPage {
     WindowsMethods windowsMethods;
     // Identificam WebElement-ele specifice pentru sub-pagini
     @FindBy(xpath = "//span[@class='text']")
-    List<WebElement> elements;
+    private List<WebElement> elements;
 
     public CommonPage(WebDriver driver) {
         this.driver = driver;
