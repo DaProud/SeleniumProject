@@ -1,12 +1,10 @@
-package demoQAWebsite.Tests;
+package Tests;
 
-import demoQAWebsite.ShareData.ShareData;
-import demoQAWebsite.pages.CommonPage;
-import demoQAWebsite.pages.HomePage;
+import ShareData.ShareData;
+import pages.CommonPage;
+import pages.HomePage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 
@@ -19,7 +17,7 @@ public class RecursionTest extends ShareData {
 
     @Test
     public void parcurgereLista() {
-        // Tema - De intrat succesiv folosind ce am invatat
+
         homePage = new HomePage(getDriver());
         commonPage = new CommonPage(getDriver());
 

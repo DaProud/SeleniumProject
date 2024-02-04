@@ -1,9 +1,9 @@
-package demoQAWebsite.Tests;
+package Tests;
 
-import demoQAWebsite.ShareData.ShareData;
-import demoQAWebsite.pages.AlertsPage;
-import demoQAWebsite.pages.CommonPage;
-import demoQAWebsite.pages.HomePage;
+import ShareData.ShareData;
+import pages.AlertsPage;
+import pages.CommonPage;
+import pages.HomePage;
 import org.testng.annotations.Test;
 
 public class AlertTest extends ShareData {

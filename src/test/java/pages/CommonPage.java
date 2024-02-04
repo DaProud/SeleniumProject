@@ -1,10 +1,10 @@
-package demoQAWebsite.pages;
+package pages;
 
-import demoQAWebsite.HelperMethods.AlertMethods;
-import demoQAWebsite.HelperMethods.ElementsMethods;
-import demoQAWebsite.HelperMethods.FramesMethods;
-import demoQAWebsite.HelperMethods.JavascriptHelpers;
-import demoQAWebsite.HelperMethods.WindowsMethods;
+import HelperMethods.AlertMethods;
+import HelperMethods.ElementsMethods;
+import HelperMethods.FramesMethods;
+import HelperMethods.JavascriptHelpers;
+import HelperMethods.WindowsMethods;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;

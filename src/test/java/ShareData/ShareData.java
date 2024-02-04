@@ -1,4 +1,4 @@
-package demoQAWebsite.ShareData;
+package ShareData;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

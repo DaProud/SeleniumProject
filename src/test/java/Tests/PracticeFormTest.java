@@ -1,9 +1,9 @@
-package demoQAWebsite.Tests;
+package Tests;
 
-import demoQAWebsite.ShareData.ShareData;
-import demoQAWebsite.pages.CommonPage;
-import demoQAWebsite.pages.HomePage;
-import demoQAWebsite.pages.PracticeFormPage;
+import ShareData.ShareData;
+import pages.CommonPage;
+import pages.HomePage;
+import pages.PracticeFormPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -33,14 +33,14 @@ public class PracticeFormTest extends ShareData {
         practiceFormPage.completeFirstRegion("Daniel", "Mindru", "daniel@test.com", "Tg Mures", "0740696969");
         practiceFormPage.completeGender("Male");
         practiceFormPage.completeDateOfBirth(1988, 3, 30);
-//
+
         // Subjects:
         List<String> subjectsList = new ArrayList<>();
         subjectsList.add("Social Studies");
         subjectsList.add("Maths");
         subjectsList.add("History");
         practiceFormPage.completeSubjectWithList(subjectsList);
-//
+
         // Hobbies:
         List<String> hobbiesValues = new ArrayList<>();
         hobbiesValues.add("Sports");

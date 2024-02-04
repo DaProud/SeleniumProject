@@ -1,9 +1,9 @@
-package demoQAWebsite.Tests;
+package Tests;
 
-import demoQAWebsite.ShareData.ShareData;
-import demoQAWebsite.pages.CommonPage;
-import demoQAWebsite.pages.FramesPage;
-import demoQAWebsite.pages.HomePage;
+import ShareData.ShareData;
+import pages.CommonPage;
+import pages.FramesPage;
+import pages.HomePage;
 import org.testng.annotations.Test;
 
 public class FramesTest extends ShareData {
@@ -13,7 +13,7 @@ public class FramesTest extends ShareData {
     FramesPage framesPage;
 
     @Test
-    public void automationMethod() throws InterruptedException {
+    public void automationMethod() {
 
         homePage = new HomePage(getDriver());
         commonPage = new CommonPage(getDriver());

@@ -1,4 +1,4 @@
-package demoQAWebsite.HelperMethods;
+package HelperMethods;
 
 import org.openqa.selenium.WebDriver;
 
