@@ -15,13 +15,13 @@ import java.util.List;
 
 public class CommonPage {
 
-    WebDriver driver;
-    ElementsMethods elementsMethods;
-    JavascriptHelpers javascriptHelpers;
-    AlertMethods alertMethods;
-    Actions actions;
-    FramesMethods framesMethods;
-    WindowsMethods windowsMethods;
+    protected WebDriver driver;
+    protected ElementsMethods elementsMethods;
+    protected JavascriptHelpers javascriptHelpers;
+    protected AlertMethods alertMethods;
+    protected Actions actions;
+    protected FramesMethods framesMethods;
+    protected WindowsMethods windowsMethods;
     // Identificam WebElement-ele specifice pentru sub-pagini
     @FindBy(xpath = "//span[@class='text']")
     private List<WebElement> elements;

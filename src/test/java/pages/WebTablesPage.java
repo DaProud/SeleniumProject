@@ -9,11 +9,11 @@ import java.util.List;
 public class WebTablesPage extends CommonPage {
 
     @FindBy(xpath = "//div[@class='rt-tbody']/div/div[@class='rt-tr -even' or @class='rt-tr -odd']")
-    List<WebElement> tableElements;
+    private List<WebElement> tableElements;
     @FindBy(id = "addNewRecordButton")
-    WebElement addNewRecordButtonElement;
+    private WebElement addNewRecordButtonElement;
     @FindBy(id = "firstName")
-    WebElement firstNameElement;
+    private WebElement firstNameElement;
     @FindBy(id = "lastName")
     WebElement lastNameElement;
     @FindBy(id = "userEmail")
