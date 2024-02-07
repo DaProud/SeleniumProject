@@ -9,9 +9,9 @@ import org.testng.annotations.Test;
 
 public class WebTableTest extends ShareData {
 
-    HomePage homePage;
-    CommonPage commonPage;
-    WebTablesPage webTablesPage;
+    private HomePage homePage;
+    private CommonPage commonPage;
+    private WebTablesPage webTablesPage;
 
     @Test
     public void automationMethod() {

@@ -8,9 +8,9 @@ import org.testng.annotations.Test;
 
 public class FramesTest extends ShareData {
 
-    HomePage homePage;
-    CommonPage commonPage;
-    FramesPage framesPage;
+    private HomePage homePage;
+    private CommonPage commonPage;
+    private FramesPage framesPage;
 
     @Test
     public void automationMethod() {

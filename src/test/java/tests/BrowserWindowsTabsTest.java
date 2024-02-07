@@ -7,9 +7,9 @@ import pages.HomePage;
 import org.testng.annotations.Test;
 
 public class BrowserWindowsTabsTest extends ShareData {
-    HomePage homePage;
-    CommonPage commonPage;
-    BrowserWindowsPage browserWindowsPage;
+    private HomePage homePage;
+    private CommonPage commonPage;
+    private BrowserWindowsPage browserWindowsPage;
 
     @Test
     public void automationMethod() {

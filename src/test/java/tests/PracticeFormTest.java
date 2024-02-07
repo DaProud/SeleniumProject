@@ -16,9 +16,9 @@ import java.util.Map;
 
 public class PracticeFormTest extends ShareData {
 
-    HomePage homePage;
-    CommonPage commonPage;
-    PracticeFormPage practiceFormPage;
+    private HomePage homePage;
+    private CommonPage commonPage;
+    private PracticeFormPage practiceFormPage;
 
     @Test
     public void automationMethod() {

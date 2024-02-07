@@ -8,9 +8,9 @@ import org.testng.annotations.Test;
 
 public class AlertTest extends ShareData {
 
-    HomePage homePage;
-    CommonPage commonPage;
-    AlertsPage alertsPage;
+    private HomePage homePage;
+    private CommonPage commonPage;
+    private AlertsPage alertsPage;
 
     @Test
     public void automationMethod() {

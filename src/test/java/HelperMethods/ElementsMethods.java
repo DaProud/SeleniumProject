@@ -14,8 +14,8 @@ import java.util.List;
 
 public class ElementsMethods {
 
-    WebDriver driver;
-    Actions actions;
+    private WebDriver driver;
+    private Actions actions;
 
     public ElementsMethods(WebDriver driver) {
         this.driver = driver;

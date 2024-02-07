@@ -12,8 +12,8 @@ import java.util.List;
 
 public class RecursionTest extends ShareData {
 
-    HomePage homePage;
-    CommonPage commonPage;
+    private HomePage homePage;
+    private CommonPage commonPage;
 
     @Test
     public void parcurgereLista() {
