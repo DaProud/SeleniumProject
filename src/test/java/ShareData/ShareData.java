@@ -1,5 +1,7 @@
 package ShareData;
 
+import configFile.ConfigFile;
+import configFile.configNode.ConfigurationNode;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -12,7 +14,9 @@ public class ShareData {
     private WebDriver driver;
 
     @BeforeMethod
-    public void prepareBrowser(){
+    public void prepareBrowser() {
+        ConfigurationNode configurationNode = ConfigFile.createConfigNode(ConfigurationNode.class);
+
         // Deschidem un browser de Chrome :)
         driver = new ChromeDriver();
 
@@ -21,14 +25,14 @@ public class ShareData {
         driver.manage().window().maximize();
 
         // Accesam o pagina Web
-        driver.get("https://demoqa.com/");
+        driver.get(configurationNode.driverConfigNode.url);
 
         // definim un wait implicit pentru un interval maxim de timp
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     @AfterMethod
-    public void clearBrowser(){
+    public void clearBrowser() {
         driver.quit();
     }
 
