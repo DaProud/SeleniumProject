@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       suite:
-        description: 'Choose automation suite: RegressionSuite, SmokeSuite'
+        description: 'Choose automation suite: RegressionSuite, SmokeSuite, SanitySuite'
         required: true
         default: RegressionSuite
 
