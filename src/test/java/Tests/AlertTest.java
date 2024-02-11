@@ -1,4 +1,4 @@
-package tests;
+package Tests;
 
 import ShareData.ShareData;
 import pages.AlertsPage;
