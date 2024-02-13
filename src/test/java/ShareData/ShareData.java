@@ -1,5 +1,6 @@
 package ShareData;
 
+import ShareData.browser.BrowserFactory;
 import configFile.ConfigFile;
 import configFile.configNode.ConfigurationNode;
 import org.openqa.selenium.WebDriver;
@@ -15,20 +16,8 @@ public class ShareData {
 
     @BeforeMethod
     public void prepareBrowser() {
-        ConfigurationNode configurationNode = ConfigFile.createConfigNode(ConfigurationNode.class);
+        driver = new BrowserFactory().getBrowserFactory();
 
-        // Deschidem un browser de Chrome :)
-        driver = new ChromeDriver();
-
-        // Facem browserul in modul Maximize - pentru a evita repozitionarea
-        // elementelor cu marimea default a ferestrei
-        driver.manage().window().maximize();
-
-        // Accesam o pagina Web
-        driver.get(configurationNode.driverConfigNode.url);
-
-        // definim un wait implicit pentru un interval maxim de timp
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     @AfterMethod

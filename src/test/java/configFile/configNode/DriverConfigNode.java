@@ -17,5 +17,7 @@ public class DriverConfigNode {
     public String resolution;
     @XmlElement(name = "Gpu")
     public String gpu;
+    @XmlElement(name = "Extensions")
+    public String extensions;
 
 }
