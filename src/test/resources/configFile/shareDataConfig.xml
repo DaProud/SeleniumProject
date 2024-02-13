@@ -3,7 +3,7 @@
     <DriverConfig>
         <LocalBrowser>edge</LocalBrowser>
         <Url>https://demoqa.com/</Url>
-        <Headless>--headless</Headless>
+        <Headless></Headless>
         <Resolution>window-size=1920,1080</Resolution>
         <Gpu>--disable-gpu</Gpu>
         <Extensions>--disable-extensions</Extensions>

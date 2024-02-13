@@ -17,7 +17,6 @@ public class ShareData {
     @BeforeMethod
     public void prepareBrowser() {
         driver = new BrowserFactory().getBrowserFactory();
-
     }
 
     @AfterMethod
