@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <configuration>
     <DriverConfig>
-        <LocalBrowser>chrome</LocalBrowser>
+        <LocalBrowser>edge</LocalBrowser>
         <Url>https://demoqa.com/</Url>
         <Headless>--headless</Headless>
         <Resolution>window-size=1920,1080</Resolution>
