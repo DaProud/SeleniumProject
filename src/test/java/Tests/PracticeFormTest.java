@@ -61,10 +61,10 @@ public class PracticeFormTest extends ShareData {
 
         // Pregatim datele pentru comparari si facem formatarile necesare unde e cazul
         // in functie de cum sunt afisate in pagina de dupa "Submit"
-        String expectedStudentName = "Daniel Mindru";
-        String expectedEmail = "daniel@test.com";
-        String expectedMobileNumber = "0740696969";
-        String expectedGender = "Male";
+        String expectedStudentName = practiceFormObject.getFirstName() + " " + practiceFormObject.getLastName();  //eg "Cristi Pop";
+        String expectedEmail = practiceFormObject.getEmail();
+        String expectedMobileNumber = practiceFormObject.getMobileNumber();
+        String expectedGender = practiceFormObject.getGender();
         String expectedDateOfBirth = String.format("%s %s,%s", 30, "March", 1988); // Format: "DD Month,YYYY"
         String expectedSubjects = String.join(", ", practiceFormObject.getSubjects()); // Lista de subiecte concatenata cu virgula si spatiu ", "
         String expectedHobbies = String.join(", ", practiceFormObject.getHobbies()); // Lista de hobbies concatenata cu virgula si spatiu ", "
@@ -73,8 +73,8 @@ public class PracticeFormTest extends ShareData {
         String[] filePathStrings = "src/test/resources/1.png".split("/");
         String expectedPicture = filePathStrings[filePathStrings.length - 1];
 
-        String expectedAddress = "Tg Mures".replaceAll("\n", " ");
-        String expectedStateAndCity = "NCR" + " " + "Delhi";
+        String expectedAddress = practiceFormObject.getAddress().replaceAll("\n", " ");
+        String expectedStateAndCity = practiceFormObject.getState() + " " + practiceFormObject.getCity();
 
         Map<String, String> expectedValuesMap = new LinkedHashMap<>();
         expectedValuesMap.put("Student Name", expectedStudentName);
