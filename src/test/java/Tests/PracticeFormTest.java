@@ -1,5 +1,7 @@
 package Tests;
 
+import ObjectData.PracticeFormObject;
+import PropertyUtility.PropertyUtility;
 import ShareData.ShareData;
 import pages.CommonPage;
 import pages.HomePage;
@@ -23,6 +25,10 @@ public class PracticeFormTest extends ShareData {
     @Test
     public void automationMethod() {
 
+        PropertyUtility propertyUtility = new PropertyUtility("PracticeFormTest");
+        PracticeFormObject practiceFormObject = new PracticeFormObject(propertyUtility.getData());
+
+
         homePage = new HomePage(getDriver());
         commonPage = new CommonPage(getDriver());
         practiceFormPage = new PracticeFormPage(getDriver());
@@ -30,24 +36,24 @@ public class PracticeFormTest extends ShareData {
         homePage.goToDesiredMenu("Forms");
         commonPage.goToDesiredSubMenu("Practice Form");
 
-        practiceFormPage.completeFirstRegion("Daniel", "Mindru", "daniel@test.com", "Tg Mures", "0740696969");
-        practiceFormPage.completeGender("Male");
+        practiceFormPage.completeFirstRegion(practiceFormObject);
+        practiceFormPage.completeGender(practiceFormObject);
         practiceFormPage.completeDateOfBirth(1988, 3, 30);
 
         // Subjects:
-        List<String> subjectsList = new ArrayList<>();
-        subjectsList.add("Social Studies");
-        subjectsList.add("Maths");
-        subjectsList.add("History");
-        practiceFormPage.completeSubjectWithList(subjectsList);
+//        List<String> subjectsList = new ArrayList<>();
+//        subjectsList.add("Social Studies");
+//        subjectsList.add("Maths");
+//        subjectsList.add("History");
+        practiceFormPage.completeSubjectWithList(practiceFormObject);
 
         // Hobbies:
-        List<String> hobbiesValues = new ArrayList<>();
-        hobbiesValues.add("Sports");
-        hobbiesValues.add("Music");
-        practiceFormPage.completeHobbies(hobbiesValues);
+//        List<String> hobbiesValues = new ArrayList<>();
+//        hobbiesValues.add("Sports");
+//        hobbiesValues.add("Music");
+        practiceFormPage.completeHobbies(practiceFormObject);
         practiceFormPage.uploadPicture();
-        practiceFormPage.completeStateAndCity("NCR", "Delhi");
+        practiceFormPage.completeStateAndCity(practiceFormObject);
 
         practiceFormPage.submitForm();
 
@@ -60,8 +66,8 @@ public class PracticeFormTest extends ShareData {
         String expectedMobileNumber = "0740696969";
         String expectedGender = "Male";
         String expectedDateOfBirth = String.format("%s %s,%s", 30, "March", 1988); // Format: "DD Month,YYYY"
-        String expectedSubjects = String.join(", ", subjectsList); // Lista de subiecte concatenata cu virgula si spatiu ", "
-        String expectedHobbies = String.join(", ", hobbiesValues); // Lista de hobbies concatenata cu virgula si spatiu ", "
+        String expectedSubjects = String.join(", ", practiceFormObject.getSubjects()); // Lista de subiecte concatenata cu virgula si spatiu ", "
+        String expectedHobbies = String.join(", ", practiceFormObject.getHobbies()); // Lista de hobbies concatenata cu virgula si spatiu ", "
 
         // Sample: "src/test/resources/1.png";  -> Trebuie sa luam doar ultima parte
         String[] filePathStrings = "src/test/resources/1.png".split("/");
