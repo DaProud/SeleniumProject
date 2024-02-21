@@ -12,4 +12,9 @@ public class CommonObject {
         return Arrays.stream(valuesSplit).collect(Collectors.toList());
     }
 
+    public String[] getDateAsArrayFromString(String date, String delimiter) {
+
+        return date.split(delimiter);
+    }
+
 }

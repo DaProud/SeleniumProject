@@ -9,6 +9,7 @@ public class PracticeFormObject extends CommonObject {
     private String email;
     private String address;
     private String mobileNumber;
+    private String[] dateOfBirth;
     private String gender;
     private List<String> subjects;
     private List<String> hobbies;
@@ -36,6 +37,9 @@ public class PracticeFormObject extends CommonObject {
                     break;
                 case "mobileNumber":
                     setMobileNumber(testData.get(key));
+                    break;
+                case "dateOfBirth":
+                    setDateOfBirth(getDateAsArrayFromString(testData.get(key), "/"));
                     break;
                 case "gender":
                     setGender(testData.get(key));
@@ -135,5 +139,13 @@ public class PracticeFormObject extends CommonObject {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public String[] getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(String[] dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 }

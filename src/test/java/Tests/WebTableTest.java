@@ -1,5 +1,7 @@
 package Tests;
 
+import ObjectData.WebTableObject;
+import PropertyUtility.PropertyUtility;
 import ShareData.ShareData;
 import pages.CommonPage;
 import pages.HomePage;
@@ -15,6 +17,8 @@ public class WebTableTest extends ShareData {
 
     @Test
     public void automationMethod() {
+        PropertyUtility propertyUtility = new PropertyUtility("WebTableTest");
+        WebTableObject webTableObject = new WebTableObject(propertyUtility.getData());
 
         homePage = new HomePage(getDriver());
         commonPage = new CommonPage(getDriver());
@@ -27,15 +31,7 @@ public class WebTableTest extends ShareData {
 
         webTablesPage.addNewRecord();
 
-        // Declararea valorilor cu care se populeaza formul
-        String firstNameValue = "Daniel";
-        String lastNameValue = "Mindru";
-        String emailValue = "daniel@test.com";
-        String ageValue = "35";
-        String salaryValue = "10000";
-        String departmentValue = "Marketing";
-
-        webTablesPage.fillRegistrationForm(firstNameValue, lastNameValue, emailValue, ageValue, salaryValue, departmentValue);
+        webTablesPage.fillRegistrationForm(webTableObject);
         webTablesPage.submitForm();
 
         // Validari:
@@ -45,12 +41,12 @@ public class WebTableTest extends ShareData {
 
         String actualTableValue = webTablesPage.getRowContentAsString(finalTableSize - 1);
 
-        Assert.assertTrue(actualTableValue.contains(firstNameValue));
-        Assert.assertTrue(actualTableValue.contains(lastNameValue));
-        Assert.assertTrue(actualTableValue.contains(emailValue));
-        Assert.assertTrue(actualTableValue.contains(ageValue));
-        Assert.assertTrue(actualTableValue.contains(salaryValue));
-        Assert.assertTrue(actualTableValue.contains(departmentValue));
+        Assert.assertTrue(actualTableValue.contains(webTableObject.getFirstName()));
+        Assert.assertTrue(actualTableValue.contains(webTableObject.getLastName()));
+        Assert.assertTrue(actualTableValue.contains(webTableObject.getEmail()));
+        Assert.assertTrue(actualTableValue.contains(String.valueOf(webTableObject.getAge())));
+        Assert.assertTrue(actualTableValue.contains(String.valueOf(webTableObject.getSalary())));
+        Assert.assertTrue(actualTableValue.contains(webTableObject.getDepartment()));
     }
 
 }

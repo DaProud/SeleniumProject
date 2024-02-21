@@ -96,13 +96,17 @@ public class PracticeFormPage extends CommonPage {
         elementsMethods.clickMultipleValues(hobbiesElement, practiceFormObject.getHobbies());
     }
 
-    public void completeDateOfBirth(int year, int month, int day) {
+    public void completeDateOfBirth(PracticeFormObject practiceFormObject) {
+        int dayOfBirth = Integer.parseInt(practiceFormObject.getDateOfBirth()[0]);
+        int monthOfBirth = Integer.parseInt(practiceFormObject.getDateOfBirth()[1]);
+        int yearOfBirth = Integer.parseInt(practiceFormObject.getDateOfBirth()[2]);
+
         elementsMethods.clickOnElement(dateOfBirthElement);
-        elementsMethods.selectByValue(yearOfBirthElement, String.valueOf(year));
-        elementsMethods.selectByValue(monthOfBirthElement, String.valueOf(month - 1));
+        elementsMethods.selectByValue(yearOfBirthElement, String.valueOf(yearOfBirth));
+        elementsMethods.selectByValue(monthOfBirthElement, String.valueOf(monthOfBirth - 1));
         javascriptHelpers.scrollDown(400);
         // TODO: refactor this - sa accepte orice date, nu doar cele >=10, din cauza formatului day-001 in xPath
-        String dayOfBirthXPath = "//div[@class='react-datepicker__day react-datepicker__day--0" + day + "']";
+        String dayOfBirthXPath = "//div[@class='react-datepicker__day react-datepicker__day--0" + dayOfBirth + "']";
         WebElement dayOfBirthElement = driver.findElement(By.xpath(dayOfBirthXPath));
         elementsMethods.clickOnElement(dayOfBirthElement);
     }

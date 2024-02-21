@@ -38,19 +38,8 @@ public class PracticeFormTest extends ShareData {
 
         practiceFormPage.completeFirstRegion(practiceFormObject);
         practiceFormPage.completeGender(practiceFormObject);
-        practiceFormPage.completeDateOfBirth(1988, 3, 30);
-
-        // Subjects:
-//        List<String> subjectsList = new ArrayList<>();
-//        subjectsList.add("Social Studies");
-//        subjectsList.add("Maths");
-//        subjectsList.add("History");
+        practiceFormPage.completeDateOfBirth(practiceFormObject);
         practiceFormPage.completeSubjectWithList(practiceFormObject);
-
-        // Hobbies:
-//        List<String> hobbiesValues = new ArrayList<>();
-//        hobbiesValues.add("Sports");
-//        hobbiesValues.add("Music");
         practiceFormPage.completeHobbies(practiceFormObject);
         practiceFormPage.uploadPicture();
         practiceFormPage.completeStateAndCity(practiceFormObject);
@@ -65,7 +54,8 @@ public class PracticeFormTest extends ShareData {
         String expectedEmail = practiceFormObject.getEmail();
         String expectedMobileNumber = practiceFormObject.getMobileNumber();
         String expectedGender = practiceFormObject.getGender();
-        String expectedDateOfBirth = String.format("%s %s,%s", 30, "March", 1988); // Format: "DD Month,YYYY"
+//        String expectedDateOfBirth = String.format("%s %s,%s", 30, "March", 1988); // Format: "DD Month,YYYY"
+        String expectedDateOfBirth = "30 March,1995"; // Format: "DD Month,YYYY"
         String expectedSubjects = String.join(", ", practiceFormObject.getSubjects()); // Lista de subiecte concatenata cu virgula si spatiu ", "
         String expectedHobbies = String.join(", ", practiceFormObject.getHobbies()); // Lista de hobbies concatenata cu virgula si spatiu ", "
 
