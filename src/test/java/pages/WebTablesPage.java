@@ -1,6 +1,7 @@
 package pages;
 
 import ObjectData.WebTableObject;
+import logger.LoggerUtility;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -37,16 +38,26 @@ public class WebTablesPage extends CommonPage {
     }
 
     public void fillRegistrationForm(WebTableObject webTableObject) {
+        LoggerUtility.infoLog("The user fills the Registration form");
+
         elementsMethods.fillElement(firstNameElement, webTableObject.getFirstName());
+        LoggerUtility.infoLog("The user fills the First Name");
         elementsMethods.fillElement(lastNameElement, webTableObject.getLastName());
+        LoggerUtility.infoLog("The user fills the Last Name");
         elementsMethods.fillElement(emailElement, webTableObject.getEmail());
+        LoggerUtility.infoLog("The user fills the Email");
         elementsMethods.fillElement(ageElement, String.valueOf(webTableObject.getAge()));
+        LoggerUtility.infoLog("The user fills the Age");
         elementsMethods.fillElement(salaryElement, String.valueOf(webTableObject.getSalary()));
+        LoggerUtility.infoLog("The user fills the Salary");
         elementsMethods.fillElement(departmentElement, webTableObject.getDepartment());
+        LoggerUtility.infoLog("The user fills the Department");
+
     }
 
     public void submitForm() {
         elementsMethods.clickOnElement(submitButton);
+        LoggerUtility.infoLog("The user Submits the form");
     }
 
     public int getCurrentTableSize() {

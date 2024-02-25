@@ -2,14 +2,14 @@ package Tests;
 
 import ObjectData.WebTableObject;
 import PropertyUtility.PropertyUtility;
-import ShareData.ShareData;
+import ShareData.Hooks;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import pages.CommonPage;
 import pages.HomePage;
 import pages.WebTablesPage;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
-public class WebTableTest extends ShareData {
+public class WebTableTest extends Hooks {
 
     private HomePage homePage;
     private CommonPage commonPage;

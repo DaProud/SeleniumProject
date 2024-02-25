@@ -1,12 +1,12 @@
 package Tests;
 
-import ShareData.ShareData;
+import ShareData.Hooks;
 import pages.BrowserWindowsPage;
 import pages.CommonPage;
 import pages.HomePage;
 import org.testng.annotations.Test;
 
-public class BrowserWindowsTabsTest extends ShareData {
+public class BrowserWindowsTabsTest extends Hooks {
     private HomePage homePage;
     private CommonPage commonPage;
     private BrowserWindowsPage browserWindowsPage;

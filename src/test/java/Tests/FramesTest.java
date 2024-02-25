@@ -1,12 +1,12 @@
 package Tests;
 
-import ShareData.ShareData;
+import ShareData.Hooks;
 import pages.CommonPage;
 import pages.FramesPage;
 import pages.HomePage;
 import org.testng.annotations.Test;
 
-public class FramesTest extends ShareData {
+public class FramesTest extends Hooks {
 
     private HomePage homePage;
     private CommonPage commonPage;

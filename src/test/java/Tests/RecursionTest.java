@@ -1,6 +1,6 @@
 package Tests;
 
-import ShareData.ShareData;
+import ShareData.Hooks;
 import pages.CommonPage;
 import pages.HomePage;
 import org.openqa.selenium.By;
@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class RecursionTest extends ShareData {
+public class RecursionTest extends Hooks {
 
     private HomePage homePage;
     private CommonPage commonPage;

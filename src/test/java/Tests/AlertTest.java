@@ -1,12 +1,12 @@
 package Tests;
 
-import ShareData.ShareData;
+import ShareData.Hooks;
 import pages.AlertsPage;
 import pages.CommonPage;
 import pages.HomePage;
 import org.testng.annotations.Test;
 
-public class AlertTest extends ShareData {
+public class AlertTest extends Hooks {
 
     private HomePage homePage;
     private CommonPage commonPage;

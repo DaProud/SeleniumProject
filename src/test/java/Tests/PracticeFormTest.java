@@ -2,21 +2,19 @@ package Tests;
 
 import ObjectData.PracticeFormObject;
 import PropertyUtility.PropertyUtility;
-import ShareData.ShareData;
-import pages.CommonPage;
-import pages.HomePage;
-import pages.PracticeFormPage;
+import ShareData.Hooks;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.CommonPage;
+import pages.HomePage;
+import pages.PracticeFormPage;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
-public class PracticeFormTest extends ShareData {
+public class PracticeFormTest extends Hooks {
 
     private HomePage homePage;
     private CommonPage commonPage;
