@@ -3,6 +3,8 @@ package Tests;
 import ObjectData.WebTableObject;
 import PropertyUtility.PropertyUtility;
 import ShareData.Hooks;
+import extentUtility.ExtentUtility;
+import extentUtility.ReportStep;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.CommonPage;
@@ -25,13 +27,16 @@ public class WebTableTest extends Hooks {
         webTablesPage = new WebTablesPage(getDriver());
 
         homePage.goToDesiredMenu("Elements");
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user enters on Elements menu");
         commonPage.goToDesiredSubMenu("Web Tables");
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user enters on Web Tables sub-menu");
 
         int initialTableSize = webTablesPage.getCurrentTableSize();
 
         webTablesPage.addNewRecord();
 
         webTablesPage.fillRegistrationForm(webTableObject);
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user fill the entire form with valid values");
         webTablesPage.submitForm();
 
         // Validari:

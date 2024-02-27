@@ -1,6 +1,8 @@
 package Tests;
 
 import ShareData.Hooks;
+import extentUtility.ExtentUtility;
+import extentUtility.ReportStep;
 import pages.CommonPage;
 import pages.HomePage;
 import org.openqa.selenium.By;
@@ -22,7 +24,9 @@ public class RecursionTest extends Hooks {
         commonPage = new CommonPage(getDriver());
 
         homePage.goToDesiredMenu("Interactions");
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user enters on Interactions menu");
         commonPage.goToDesiredSubMenu("Sortable");
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user enters on Sortable menu");
 
         // Decalam elementele prin Drag and Drop
         Actions actions = new Actions(getDriver());
@@ -38,6 +42,7 @@ public class RecursionTest extends Hooks {
                 .build()
                 .perform();
         }
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user changes the order of elements");
     }
 
 }

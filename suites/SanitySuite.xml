@@ -4,7 +4,10 @@
     <test name="SanitySuite" >
         <classes>
             <class name = "Tests.AlertTest" />
+            <class name = "Tests.BrowserWindowsTabsTest" />
+            <class name = "Tests.FramesTest" />
             <class name = "Tests.PracticeFormTest" />
+            <class name = "Tests.RecursionTest" />
             <class name = "Tests.WebTableTest" />
         </classes>
     </test><!-- Test -->

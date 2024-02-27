@@ -1,6 +1,8 @@
 package Tests;
 
 import ShareData.Hooks;
+import extentUtility.ExtentUtility;
+import extentUtility.ReportStep;
 import pages.CommonPage;
 import pages.FramesPage;
 import pages.HomePage;
@@ -20,14 +22,13 @@ public class FramesTest extends Hooks {
         framesPage = new FramesPage(getDriver());
 
         homePage.goToDesiredMenu("Alerts, Frame & Windows");
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user enters on Alerts, Frame & Windows menu");
         commonPage.goToDesiredSubMenu("Frames");
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user enters on Frames sub-menu");
 
-        // Frame 1:
         framesPage.interactWithFrame1();
-
-        // Frame 2:
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user interacts with the first iFrame");
         framesPage.interactWithFrame2();
-
-
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user interacts with the second iFrame");
     }
 }

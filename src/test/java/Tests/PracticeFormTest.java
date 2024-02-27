@@ -3,6 +3,8 @@ package Tests;
 import ObjectData.PracticeFormObject;
 import PropertyUtility.PropertyUtility;
 import ShareData.Hooks;
+import extentUtility.ExtentUtility;
+import extentUtility.ReportStep;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -32,15 +34,25 @@ public class PracticeFormTest extends Hooks {
         practiceFormPage = new PracticeFormPage(getDriver());
 
         homePage.goToDesiredMenu("Forms");
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user enters on Forms menu");
         commonPage.goToDesiredSubMenu("Practice Form");
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user enters on Practice Form menu");
 
         practiceFormPage.completeFirstRegion(practiceFormObject);
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user fills the first region");
+
         practiceFormPage.completeGender(practiceFormObject);
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user selects the gender");
         practiceFormPage.completeDateOfBirth(practiceFormObject);
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user selects the date of birth");
         practiceFormPage.completeSubjectWithList(practiceFormObject);
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user enters the subjects");
         practiceFormPage.completeHobbies(practiceFormObject);
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user enters the hobbies");
         practiceFormPage.uploadPicture();
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user uploads the picture");
         practiceFormPage.completeStateAndCity(practiceFormObject);
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user selects the state and city");
 
         practiceFormPage.submitForm();
 
